@@ -17,15 +17,8 @@ public class AsteorBarNeoForge {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public AsteorBarNeoForge(IEventBus modEventBus) {
-        modEventBus.addListener(this::commonSetup);
-        modEventBus.addListener(NetworkHandler::register);
-        NeoForge.EVENT_BUS.addListener(NetworkHandler::onPlayerTick);
         ModLoadingContext.get().getActiveContainer().registerConfig(ModConfig.Type.CLIENT, NeoForgeConfigAdapter.Config.CONFIG);
         AsteorBar.platformAdapter = new NeoForgePlatformAdapter();
         AsteorBar.config = new NeoForgeConfigAdapter();
-    }
-
-    private void commonSetup(final FMLCommonSetupEvent event) {
-        LOGGER.info("Enabling AsteorBar");
     }
 }
